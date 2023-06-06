@@ -159,13 +159,13 @@
 // console.log(result);
 
 
-var permissions = 'READ_BOOK;WRITE_BOOK;UPLOAD_BOOK;DELETE_BOOK'
+// var permissions = 'READ_BOOK;WRITE_BOOK;UPLOAD_BOOK;DELETE_BOOK'
 
-var arrayPermission = permissions.split(';')
+// var arrayPermission = permissions.split(';')
 
-var newArrayPermission = arrayPermission.filter(function(_permission) {
-  return _permission !== 'UPLOAD_BOOK'
-})
+// var newArrayPermission = arrayPermission.filter(function(_permission) {
+//   return _permission !== 'UPLOAD_BOOK'
+// })
 
-var updatePermissions = newArrayPermission.join(';')
-console.log(updatePermissions);
+// var updatePermissions = newArrayPermission.join(';')
+// console.log(updatePermissions);
