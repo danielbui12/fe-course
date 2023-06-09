@@ -9,4 +9,10 @@ var daySo = [1, 2, 3, 4, 1, 3, 4, 2, 1, 5]
  * 5 - 1
  * */
 
- 
+
+function execute() {
+
+}
+
+execute(daySo)
+
