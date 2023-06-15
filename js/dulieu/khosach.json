@@ -1,0 +1,9 @@
+[
+	{
+		"bookName":"dac nhan tam",
+		"bookAuthor":"khong biet",
+		"bookPrice":"100000","createdAt":"2023-06-15T14:05:22.946Z"
+	},{
+		"bookName":"time to travel","bookAuthor":"khong biet","bookPrice":"5000000","createdAt":"2023-06-15T14:14:08.176Z"
+	}
+]

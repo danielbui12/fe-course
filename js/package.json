@@ -1,0 +1,17 @@
+{
+  "name": "hoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "buoi_11.js",
+  "scripts": {
+    "test": "echo \"no test file\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "fs-extra": "^11.1.1",
+    "fs-promise": "^2.0.3",
+    "prompt-sync": "^4.2.0"
+  }
+}
