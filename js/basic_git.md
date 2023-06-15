@@ -8,7 +8,7 @@
 | add file | git add <file_name> | using '.' to add all files |
 | commit | git commit -m "<message>" | |
 | undo a commit | git reset HEAD~ | |
-| push code | git push origin <branch> | |
+| push code | git push origin <branch_name> | |
 | stash change | git stash <file_name> | using '-u' to stash all |
 | clear stash | git stash clear | |
 | undo a stash | git stash pop | |
