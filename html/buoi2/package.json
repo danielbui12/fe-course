@@ -1,0 +1,12 @@
+{
+  "name": "buoi2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/json-server --watch db.json --port 4001"
+  }
+}

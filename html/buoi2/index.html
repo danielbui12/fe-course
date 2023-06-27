@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=3.0">
+  <title>Book</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <form id="form-book" onsubmit="onSubmit(event)">
+    <label for="book_name">Book name</label>
+    <input required name="book_name" type="text" id="book_name" placeholder="Type..."/>
+    <br />
+    <label for="author">Author</label>
+    <input required name="author" type="text" id="author" placeholder="Type..."/>
+    <br />
+    <label for="price">Price</label>
+    <input required name="price" type="number" id="price" placeholder="Type..."/>
+    <br />
+    <button type="submit">
+      Add
+    </button>
+  </form>
+
+  <ul id="book-list">
+
+  </ul>
+
+  <script src="index.js"></script>
+</body>
+</html>
