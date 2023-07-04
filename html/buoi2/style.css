@@ -1,0 +1,49 @@
+* {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 70px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.container #form-book {
+  max-width: 300px;
+}
+
+.container #form-book .form-item {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container #form-book button {
+  background-color: burlywood;
+  color: #ffffff;
+  padding: 6px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.container #form-book button:hover {
+  opacity: .8;
+}
+
+.container ul li {
+  margin-bottom: 12px;
+  list-style-type: upper-roman;
+}
+
+.container ul li button {
+  margin-left: 12px;
+}

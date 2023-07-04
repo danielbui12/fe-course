@@ -24,12 +24,12 @@ function createBook(bookData) {
   spanEl.innerHTML = bookData.book_name + ' of ' + bookData.author + ' published at ' + bookData.created_at + ' .Price: ' + bookData.price + '$'
 
   var btnDeleteEl = document.createElement('button')
-  btnDeleteEl.innerHTML = '&#9874;'
+  btnDeleteEl.innerHTML = '<iconify-icon icon="material-symbols:delete" ></iconify-icon>'
   btnDeleteEl.id = 'delete-book-' + bookData.id
   btnDeleteEl.onclick = deleteItem
 
   var btnUpdateEl = document.createElement('button')
-  btnUpdateEl.innerHTML = '&#9999;'
+  btnUpdateEl.innerHTML = '<iconify-icon icon="material-symbols:edit"></iconify-icon>'
   btnUpdateEl.id = 'edit-book-' + bookData.id
   btnUpdateEl.onclick = updateItem
   updatingBookId = bookData.id

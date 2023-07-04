@@ -5,26 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=3.0">
   <title>Book</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
 </head>
 <body>
-  <form id="form-book" onsubmit="onSubmit(event)">
-    <label for="book_name">Book name</label>
-    <input required name="book_name" type="text" id="book_name" placeholder="Type..."/>
-    <br />
-    <label for="author">Author</label>
-    <input required name="author" type="text" id="author" placeholder="Type..."/>
-    <br />
-    <label for="price">Price</label>
-    <input required name="price" type="number" id="price" placeholder="Type..."/>
-    <br />
-    <button type="submit">
-      Add
-    </button>
-  </form>
-
-  <ul id="book-list">
-
-  </ul>
+  <div class="container">
+    <h1>Book App</h1>
+    <form id="form-book" onsubmit="onSubmit(event)" class="form-book">
+      <div class="form-item">
+        <label for="book_name">Book name</label>
+        <input required name="book_name" type="text" id="book_name" placeholder="Type..."/>
+      </div>
+      <div class="form-item">
+        <label for="author">Author</label>
+        <input required name="author" type="text" id="author" placeholder="Type..."/>
+      </div>
+  
+      <div class="form-item">
+      <label for="price">Price</label>
+      <input required name="price" type="number" id="price" placeholder="Type..."/>
+        </div>
+      <button type="submit">
+        Add
+      </button>
+    </form>
+    <ul id="book-list">
+  
+    </ul>
+  </div>
 
   <script src="index.js"></script>
 </body>
