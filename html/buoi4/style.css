@@ -1,0 +1,58 @@
+.container {
+}
+
+.item {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.item:not(:last-of-type) {
+  border-bottom: 1px solid #cacaca;  
+}
+
+.item .item-index {
+  width: 31px;
+  height: 31px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item:nth-of-type(1) .item-index {
+  background-image: url(https://avatar-ex-swe.nixcdn.com/song/2023/07/04/f/2/8/7/1688441379757.jpg);
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.item:nth-of-type(1) .item-index span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  font-size: 24px;
+  background-color: red;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+}
+
+.item:nth-of-type(2) .item-index {
+  color: #1abc9c;
+}
+
+.item:nth-of-type(3) .item-index {
+  color: orange;
+}
+
+.item .item-content .name {
+  font-weight: 500;
+}
+
+.item .item-content .author {
+  font-weight: 400;
+  color: #acacac;
+}
