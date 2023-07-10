@@ -1,0 +1,16 @@
+.container {
+    flex-direction: column;
+  display: flex;
+}
+
+.container .item {
+  min-width: 500px;
+  background-color: #cacaca;
+  border: 1px solid #000;
+}
+
+@media (min-width: 1000px) {
+  .container {
+  flex-direction: row;
+  }
+}

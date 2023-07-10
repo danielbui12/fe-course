@@ -1,0 +1,20 @@
+/*
+2D transform
+- translate: di chuyển vị trí
+- rotate: xoay
+- scale: thay đổi kích cỡ
+*/
+
+/* https://tympanus.net/Tutorials/CaptionHoverEffects/index.html */
+
+
+.item {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  transition: all 2s ease-in-out 1s;
+}
+
+.item:hover {
+  transform: scale(1.4);
+}
