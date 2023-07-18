@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "./node_modules/.bin/ts-node index.ts",
+    "dev": "./node_modules/.bin/ts-node src/interface.ts",
     "build": "./node_modules/.bin/tsc -p ."
   },
   "dependencies": {
