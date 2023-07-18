@@ -1,0 +1,16 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "./node_modules/.bin/ts-node index.ts",
+    "build": "./node_modules/.bin/tsc -p ."
+  },
+  "dependencies": {
+    "@types/node": "^20.4.2",
+    "ts-node": "^10.9.1",
+    "tsc": "^2.0.4",
+    "typescript": "^5.1.6"
+  }
+}
