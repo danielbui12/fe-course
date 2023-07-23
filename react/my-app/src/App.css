@@ -75,3 +75,11 @@
 .isCompleted {
   text-decoration: line-through;
 }
+
+.accordion .content {
+  display: none;
+}
+
+.accordion:hover .content {
+  display: block;
+}
