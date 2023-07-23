@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add classnams
+
+PATH: 
+  C:\Users\admin\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\admin\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\WINDOWS\system32\config\systemprofile\AppData\Roaming\npm;C:\Program Files\MongoDB\Server\5.0\bin;C:\Program Files\CodeBlocks\MinGW\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\heroku\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn;C:\Program Files\Microsoft SQL Server\150\Tools\Binn;C:\Program Files\Microsoft SQL Server\150\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn;C:\Program Files\Azure Data Studio\bin;C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\bin;C:\Program Files\Tesseract-OCR;C:\Program Files\Sublime Text;C:\Users\admin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\admin\.cargo\bin;C:\Documents\flutter\bin;C:\Users\admin\AppData\Local\GitHubDesktop\bin;C:\Users\admin\AppData\Local\Android\Sdk\platform-tools;C:\Users\admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Azure Data Studio\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2021.3\bin;C:\Users\admin\AppData\Roaming\npm;C:\Users\admin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\PostgreSQL\15\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  18.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/classnams: Not found
+      at params.callback [as _callback] (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66138:18)
+      at self.callback (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
