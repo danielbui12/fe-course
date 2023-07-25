@@ -1,36 +1,47 @@
 import React from 'react';
 import './App.css';
-import classNames from 'classnames';
 
-class Accordion extends React.Component {
+class List extends React.Component {
   render() {
-    const { heading, children } = this.props
-    
+    const { data, render } = this.props
     return (
-      <div className='accordion'>
-        <h1>{heading}</h1>
-
-        <div className='content'>
-          {children}
-        </div>
+      <div>
+        {data.map(_data => render(_data))}
       </div>
     )
   }
 }
-
 class App extends React.Component {
   render() {
+    const dataList = [
+      {
+        id: 1,
+        title: 'Cafe',
+        isDone: false
+      },
+      {
+        id: 2,
+        title: 'Work',
+        isDone: true
+      },
+      {
+        id: 3,
+        title: 'Watching movie',
+        isDone: true,
+      }
+    ]
+
     return (
-      <div className='App'>
-        <Accordion 
-          heading="This is heading"
-        >
-          <div>
-            "This is content"
-          </div>
-        </Accordion>
-      </div>
-    )
+      <>
+      {/* render props */}
+        <List 
+          data={dataList} 
+          render={(_data) => {
+            return <div>{_data.title}</div>
+          }} 
+        />
+      </>
+    );
   }
 }
 
