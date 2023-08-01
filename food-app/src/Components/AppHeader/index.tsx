@@ -54,7 +54,7 @@ function AppHeader() {
         <List
           dataSource={comments}
           renderItem={(item) => {
-            return <List.Item>{item.body}</List.Item>;
+            return <List.Item>{"item.body"}</List.Item>;
           }}
         ></List>
       </Drawer>
@@ -71,7 +71,7 @@ function AppHeader() {
           renderItem={(item) => {
             return (
               <List.Item>
-                <Typography.Text strong>{item.title}</Typography.Text> has been
+                <Typography.Text strong>{"item.title"}</Typography.Text> has been
                 ordered!
               </List.Item>
             );

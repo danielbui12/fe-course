@@ -119,7 +119,7 @@ function Dashboard() {
     </Space>
   );
 }
-
+// @ts-ignore
 function DashboardCard({ title, value, icon }) {
   return (
     <Card>
@@ -176,9 +176,11 @@ function DashboardChart() {
 
   useEffect(() => {
     getRevenue().then((res) => {
+      // @ts-ignore
       const labels = res.carts.map((cart) => {
         return `User-${cart.userId}`;
       });
+      // @ts-ignore
       const data = res.carts.map((cart) => {
         return cart.discountedTotal;
       });
@@ -193,7 +195,7 @@ function DashboardChart() {
           },
         ],
       };
-
+      // @ts-ignore
       setReveneuData(dataSource);
     });
   }, []);
@@ -213,6 +215,7 @@ function DashboardChart() {
 
   return (
     <Card style={{ width: 500, height: 250 }}>
+      {/* @ts-ignore */}
       <Bar options={options} data={reveneuData} />
     </Card>
   );

@@ -56,9 +56,6 @@ function Customers() {
           },
         ]}
         dataSource={dataSource}
-        pagination={{
-          pageSize: 5,
-        }}
       ></Table>
     </Space>
   );

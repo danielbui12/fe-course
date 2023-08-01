@@ -1,16 +1,11 @@
 {
-  "eslintConfig": {
-    "extends": ["react-app", "shared-config", "prettier"],
-    "rules": {
-      "additional-rule": "warn"
-    },
-    "overrides": [
-      {
-        "files": ["**/*.ts?(x)"],
-        "rules": {
-          "additional-typescript-only-rule": "warn"
-        }
-      }
-    ]
-  }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "react-app",
+    "prettier"
+  ],
+  "plugins": ["react", "@typescript-eslint", "prettier"]
 }
