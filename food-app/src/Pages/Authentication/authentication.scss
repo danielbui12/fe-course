@@ -1,9 +1,29 @@
-.app {
-  .content {
+.authentication {
+  min-height: 100vh;
+  width: 100%;
 
+  &>a {
+    width: 280px;
+    height: 280px;
+
+    &>div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--primary-color);
+      background: var(--bg-dark-2);
+      font-size: 35px;
+      gap: 12px;
+    }
   }
 
-  .title {
-
-  }
+  @media (min-width: 425px) {
+    &>a {
+      width: 380px;
+      height: 380px;
+    }
+  } 
 }

@@ -1,15 +1,15 @@
-import { lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./Components/Layout";
 import { ConfigProvider } from "antd";
 import "./App.css";
 import "antd/dist/reset.css"
 
-const Dashboard = lazy(() => import('./Pages/Dashboard'))
-const Inventory = lazy(() => import('./Pages/Inventory'))
-const Orders = lazy(() => import('./Pages/Orders'))
-const Customers = lazy(() => import('./Pages/Customers'))
-const Authentication = lazy(() => import('./Pages/Authentication'))
+import BookTable from './Pages/BookTable'
+import Dashboard from './Pages/Dashboard'
+import Inventory from './Pages/Inventory'
+import Orders from './Pages/Orders'
+import Customers from './Pages/Customers'
+import Authentication from './Pages/Authentication'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/authentication",
     element: <Authentication />
+  },
+  {
+    path: "/book-table",
+    element: <BookTable />
   }
 ]);
 
