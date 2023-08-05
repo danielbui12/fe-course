@@ -69,3 +69,28 @@ svg {
   background-color: #EA7C69;
 }
 /* ANT SELECT */
+
+
+/* ANT FORM */
+.ant-form-item label {
+  color: var(--white-color) !important;
+}
+
+.ant-input-affix-wrapper {
+  background: var(--bg-form) !important;
+  border: 1px solid var(--bg-line, #393C49) !important;
+}
+
+.ant-form-item-control-input-content > input {
+  border: 1px solid var(--bg-line, #393C49) !important;
+}
+
+.ant-input::placeholder {
+  color: var(--text-gray) !important;
+}
+
+.ant-input {
+  background: var(--bg-form) !important;
+  color: var(--white-color) !important;
+}
+/* ANT FORM */

@@ -10,6 +10,7 @@ import Inventory from './Pages/Inventory'
 import Orders from './Pages/Orders'
 import Customers from './Pages/Customers'
 import Authentication from './Pages/Authentication'
+import Login from "./Pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/book-table",
     element: <BookTable />
+  },
+  {
+    path: "/login",
+    element: <Login />
   }
 ]);
 

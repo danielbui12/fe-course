@@ -7,7 +7,7 @@ const BookTable: React.FC = () => {
   const navigate = useNavigate()
 
   return (
-    <main className='book-table title-color mx-8 flex flex-col justify-center items-left'>
+    <main className='book-table mx-8 flex flex-col justify-center items-left'>
       <Typography.Title className='title-color pb-3' level={1} style={{ margin: 0 }}>
         Select a table to continue:
       </Typography.Title>
