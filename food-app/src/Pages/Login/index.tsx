@@ -1,22 +1,20 @@
-import { Button, Form, Input } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import "./login.scss"
-
+import { Button, Form, Input } from "antd";
+import { useNavigate } from "react-router-dom";
+import "./login.scss";
 
 function Login() {
   type FieldType = {
     username?: string;
     password?: string;
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onFinish = (values: any) => {
-    console.log('Success:', values);
+    console.log("Success:", values);
   };
-  
-  
+
   return (
-    <main className='login mx-8 flex flex-col justify-center items-center'>
+    <main className="login mx-8 flex flex-col justify-center items-center">
       <div className="login-form">
         <Form
           name="login-form"
@@ -27,31 +25,31 @@ function Login() {
           <Form.Item<FieldType>
             label="Username"
             name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+            rules={[{ required: true, message: "Please input your username!" }]}
           >
-            <Input size='large' />
+            <Input size="large" />
           </Form.Item>
 
           <Form.Item<FieldType>
             label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            rules={[{ required: true, message: "Please input your password!" }]}
           >
-            <Input.Password size='large' />
+            <Input.Password size="large" />
           </Form.Item>
 
           <Form.Item wrapperCol={{ span: 16 }}>
-            <Button 
-              type="primary" 
+            <Button
+              type="primary"
               htmlType="submit"
-              size='large'
-              className='btn-submit title-color m-2'
+              size="large"
+              className="btn-submit title-color m-2"
             >
               Login
             </Button>
             <Button
-              className='title-color m-2'
-              size='large'
+              className="title-color m-2"
+              size="large"
               onClick={() => navigate(-1)}
             >
               Back
@@ -60,7 +58,7 @@ function Login() {
         </Form>
       </div>
     </main>
-  )
+  );
 }
 
-export default Login
+export default Login;

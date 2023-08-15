@@ -8,21 +8,17 @@ function Authentication() {
       <Link to="/book-table">
         <div>
           <UserOutlined />
-          <span className="title-color">
-            User
-          </span>
+          <span className="title-color">User</span>
         </div>
       </Link>
       <Link to="/login">
         <div>
           <SettingOutlined />
-          <span className="title-color">
-            Admin
-          </span>
+          <span className="title-color">Admin</span>
         </div>
       </Link>
     </main>
-  )
+  );
 }
 
 export default Authentication;
