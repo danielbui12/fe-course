@@ -66,7 +66,7 @@ svg {
 }
 
 .ant-select-item.ant-select-item-option.ant-select-item-option-selected {
-  background-color: #ea7c69;
+  background-color: var(--primary-color, #ea7c69);
 }
 /* ANT SELECT */
 
@@ -93,3 +93,9 @@ svg {
   color: var(--white-color) !important;
 }
 /* ANT FORM */
+
+/* ANT MENU */
+.ant-menu-item-selected svg {
+  fill: var(--white-color) !important;
+}
+/* ANT MENU */
