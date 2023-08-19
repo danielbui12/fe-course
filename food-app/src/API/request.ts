@@ -1,5 +1,4 @@
 import axios from "axios";
-import { message } from "antd";
 import queryString from "query-string";
 
 const getQueryString = (query: object) => {
@@ -9,7 +8,7 @@ const getQueryString = (query: object) => {
   return `?${result}`;
 };
 
-interface IRequest {
+export interface IRequest {
   method: "GET" | "POST";
   path?: string;
   data?: object;
@@ -20,6 +19,11 @@ interface IRequest {
   };
 }
 
+export interface IResponse {
+  data: any;
+  status: number;
+}
+
 function send({
   method,
   path,
@@ -27,14 +31,11 @@ function send({
   query = {},
   headers = {},
   newUrl,
-}: IRequest) {
+}: IRequest): Promise<IResponse> {
   return new Promise((resolve) => {
     let url =
       (newUrl ? newUrl : process.env.REACT_APP_API_URL) +
-      `${path}${getQueryString(query)}`;
-    if (newUrl) {
-      url = `${newUrl}${getQueryString(query)}`;
-    }
+      `${path}` + getQueryString(query);
     const dataString = window.localStorage.getItem("data");
     if (dataString) {
       const newData = JSON.parse(dataString);
@@ -46,35 +47,17 @@ function send({
       data,
       headers,
     })
-      .then((result) => {
-        const data = result.data;
-        return resolve(data);
+      .then((result) => {        
+        return resolve({
+          data: result.data,
+          status: result.status
+        });
       })
       .catch((error) => {
-        const { response = {} } = error;
-
-        const result = response.data ? response.data : null;
-        if (!result) {
-          return resolve({ statusCode: 404, message: "" });
-        } else {
-          const { statusCode, message: data } = result;
-
-          if (statusCode === 401) {
-            message.warning(data || "Đã có lỗi xảy ra");
-            setTimeout(() => {
-              window.localStorage.clear();
-              window.location.href = "/";
-            }, 1000);
-          } else if (
-            (statusCode === 401 && data === "Unauthorized") ||
-            (statusCode === 403 && data === "InvalidToken")
-          ) {
-            window.localStorage.clear();
-            window.location.href = "/";
-          } else {
-            return resolve(result);
-          }
-        }
+        return resolve({
+          data: error.response.data,
+          status: error.response.status
+        });
       });
   });
 }
