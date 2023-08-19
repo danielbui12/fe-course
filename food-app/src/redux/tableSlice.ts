@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ITable } from "../type";
-import { useDispatch } from "./store";
+import { AppDispatch } from "./store";
 import { getTable } from "../API";
 
-export const getAvailableTable = () => async (dispatch: typeof useDispatch) => {
+export const getAvailableTable = () => async (dispatch: AppDispatch) => {
   const data = await getTable(false);
-  // @ts-ignore
   dispatch(tableSlice.actions.saveAvailableTableData(data))
 }
 

@@ -1,16 +1,20 @@
 import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
+import { useDispatch } from "../../redux/store";
+import { handleLogin } from "../../redux/adminSlice";
+import { AnyAction } from "redux";
 
 function Login() {
   type FieldType = {
-    username?: string;
-    password?: string;
+    email: string;
+    password: string;
   };
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const onFinish = (values: FieldType) => {
+    dispatch(handleLogin(values.email, values.password) as unknown as AnyAction)
   };
 
   return (
@@ -23,9 +27,12 @@ function Login() {
           autoComplete="off"
         >
           <Form.Item<FieldType>
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: "Please input your email!" },
+              { type: "email", message: "Invalid email!" }
+          ]}
           >
             <Input size="large" />
           </Form.Item>

@@ -36,6 +36,16 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/management",
+    element: <Layout />,
+    children: [
+      {
+        path: "/management",
+        element: <Dashboard />,
+      },
+    ]
+  },
+  {
     path: "/authentication",
     element: <Authentication />,
   },
