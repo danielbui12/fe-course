@@ -1,5 +1,8 @@
 import axios from "axios";
 import queryString from "query-string";
+import { verifyJWT } from "./jwt";
+import { message } from "antd";
+import { STORAGE_ACCESS_TOKEN_KEY } from "../utils/constants";
 
 const getQueryString = (query: object) => {
   const result = queryString.stringify(query);
@@ -24,7 +27,7 @@ export interface IResponse {
   status: number;
 }
 
-function send({
+async function send({
   method,
   path,
   data,
@@ -32,31 +35,42 @@ function send({
   headers = {},
   newUrl,
 }: IRequest): Promise<IResponse> {
+  const jwt = window.localStorage.getItem(STORAGE_ACCESS_TOKEN_KEY) || "";
+  const validateRes = await verifyJWT(jwt, `${method}_${path}`);
+  switch (validateRes) {
+    case 403:
+      message.warning("Forbidden!");
+      setTimeout(() => window.history.back(), 1000);
+      break;
+    case 401:
+      message.warning("Expired session!");
+      setTimeout(() => (window.location.href = "/authentication"), 1000);
+      break;
+    default:
+      break;
+  }
+
   return new Promise((resolve) => {
     let url =
       (newUrl ? newUrl : process.env.REACT_APP_API_URL) +
-      `${path}` + getQueryString(query);
-    const dataString = window.localStorage.getItem("data");
-    if (dataString) {
-      const newData = JSON.parse(dataString);
-      headers.authorization = `Bearer ${newData.token}`;
-    }
+      `${path}` +
+      getQueryString(query);
     axios({
       method,
       url,
       data,
       headers,
     })
-      .then((result) => {        
+      .then(async (result) => {
         return resolve({
           data: result.data,
-          status: result.status
+          status: result.status,
         });
       })
       .catch((error) => {
         return resolve({
           data: error.response.data,
-          status: error.response.status
+          status: error.response.status,
         });
       });
   });

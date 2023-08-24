@@ -5,8 +5,8 @@ import { getTable } from "../API";
 
 export const getAvailableTable = () => async (dispatch: AppDispatch) => {
   const data = await getTable(false);
-  dispatch(tableSlice.actions.saveAvailableTableData(data))
-}
+  dispatch(tableSlice.actions.saveAvailableTableData(data));
+};
 
 const tableSlice = createSlice({
   name: "table",

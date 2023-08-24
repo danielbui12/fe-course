@@ -1,4 +1,10 @@
-export type Tag = "Hot Dish" | "Cold Dish" | "Soup" | "Grill" | "Appetizer" | "Dessert";
+export type Tag =
+  | "Hot Dish"
+  | "Cold Dish"
+  | "Soup"
+  | "Grill"
+  | "Appetizer"
+  | "Dessert";
 
 export interface IFood {
   id: number;
@@ -42,5 +48,3 @@ export interface IAdmin {
 export interface IUser {
   table_id: number;
 }
-
-

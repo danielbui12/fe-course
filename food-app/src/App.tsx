@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         path: "/management",
         element: <Dashboard />,
       },
-    ]
+    ],
   },
   {
     path: "/authentication",
@@ -67,7 +67,7 @@ function App() {
           token: {
             colorPrimary: "#EA7C69",
             colorBgContainer: "#1f1d2b",
-            colorText: '#ffffff'
+            colorText: "#ffffff",
           },
         }}
       >

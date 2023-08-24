@@ -11,10 +11,12 @@ function Login() {
     password: string;
   };
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onFinish = (values: FieldType) => {
-    dispatch(handleLogin(values.email, values.password) as unknown as AnyAction)
+    dispatch(
+      handleLogin(values.email, values.password) as unknown as AnyAction,
+    );
   };
 
   return (
@@ -31,8 +33,8 @@ function Login() {
             name="email"
             rules={[
               { required: true, message: "Please input your email!" },
-              { type: "email", message: "Invalid email!" }
-          ]}
+              { type: "email", message: "Invalid email!" },
+            ]}
           >
             <Input size="large" />
           </Form.Item>

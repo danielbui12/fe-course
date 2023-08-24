@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const STORAGE_KEY = 'user_reducer'
-const storageData = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "{}")
+const STORAGE_KEY = "user_reducer";
+const storageData = JSON.parse(
+  window.localStorage.getItem(STORAGE_KEY) || "{}",
+);
 
 function _saveData(data: object) {
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
 const userSlice = createSlice({

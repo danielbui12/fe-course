@@ -9,20 +9,20 @@ import { book } from "../../redux/userSlice";
 
 const BookTable: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-  const tableReducer = useSelector((state) => state.table)
+  const dispatch = useDispatch();
+  const tableReducer = useSelector((state) => state.table);
 
   useEffect(() => {
     if (tableReducer.availableTable.length === 0) {
-      dispatch(getAvailableTable() as unknown as AnyAction)
+      dispatch(getAvailableTable() as unknown as AnyAction);
     }
-  }, [tableReducer.availableTable, dispatch])
+  }, [tableReducer.availableTable, dispatch]);
 
   return (
     <main className="book-table mx-8 flex flex-col justify-center items-left">
       <Form
         onFinish={({ table_id }) => {
-          dispatch(book(parseInt(table_id)))
+          dispatch(book(parseInt(table_id)));
         }}
       >
         <Typography.Title
@@ -37,15 +37,17 @@ const BookTable: React.FC = () => {
           rules={[
             {
               required: true,
-              message: "Please choose a table"
-            }
+              message: "Please choose a table",
+            },
           ]}
         >
           <Select
             showSearch
             placeholder="Book a table"
             optionFilterProp="children"
-            filterOption={(input, option) => (option?.label ?? "").includes(input)}
+            filterOption={(input, option) =>
+              (option?.label ?? "").includes(input)
+            }
             filterSort={(optionA, optionB) =>
               (optionA?.label ?? "")
                 .toLowerCase()
