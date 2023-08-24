@@ -10,7 +10,7 @@ export const handleLogin =
     }
   };
 
-const STORAGE_KEY = "admin_reducer";
+export const STORAGE_KEY = "admin_reducer";
 const storageData = JSON.parse(
   window.localStorage.getItem("STORAGE_KEY") || "{}",
 );

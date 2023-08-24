@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import {
   MenuFoldOutlined,
@@ -13,30 +13,38 @@ const { Header, Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-
-const adminItems: MenuItem[] = [
-  getItem("Setting", "1", <SettingOutlined />),
-  getItem("Statistic", "2", <PieChartOutlined />),
-];
-
 function CommonLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const navigate = useNavigate()
+
+  function getItem(
+    label: React.ReactNode,
+    key: React.Key,
+    icon?: React.ReactNode,
+    path?: string,
+    children?: MenuItem[],
+  ): MenuItem {
+    return {
+      key,
+      icon,
+      children,
+      label,
+      onClick: () => {
+        if (path) {
+          navigate(path);
+        }
+      }
+    } as MenuItem;
+  }
+
+  const adminItems: MenuItem[] = [
+    getItem("Setting", "1", <SettingOutlined />, '/management'),
+    getItem("Statistic", "2", <PieChartOutlined />, '/management/statistic'),
+  ];
+
 
   return (
     <Layout style={{ minHeight: "100vh", maxWidth: "100vw" }}>
@@ -96,7 +104,10 @@ function CommonLayout() {
                   height: 64,
                 }}
               />
-              {window.location.pathname.replace(/[-,/]/g, " ")}
+              {(() => {
+                const paths = window.location.pathname.split('/')
+                return paths[paths.length - 1]
+              })()}
             </>
           ) : (
             <>Jaegar Resto</>
@@ -117,4 +128,5 @@ function CommonLayout() {
     </Layout>
   );
 }
+
 export default CommonLayout;

@@ -44,6 +44,7 @@ async function send({
       break;
     case 401:
       message.warning("Expired session!");
+      window.localStorage.removeItem(STORAGE_ACCESS_TOKEN_KEY);
       setTimeout(() => (window.location.href = "/authentication"), 1000);
       break;
     default:
