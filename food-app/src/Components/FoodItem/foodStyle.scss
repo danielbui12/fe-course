@@ -1,0 +1,46 @@
+.food-item {
+  border-radius: 8px;
+  border: 1px dashed var(--bg-line, #393C49);
+  background: var(--bg-dark-2, #1F1D2B);
+
+  .ant-card-body {
+    border: unset;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &>img {
+      margin-bottom: 14.3px;
+    }
+
+    .food-name {
+      color: var(--white-color, #FFF);
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 130%;
+      margin-bottom: 8px;
+    }
+
+    .food-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      color: var(--text-light, #ABBBC2);
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+    }
+  }
+
+  .edit-btn {
+    border-radius: 0px 0px 8px 8px;
+    background: #EA7C6925;
+      /* --primary-color */
+    border: none;
+    width: 100%;
+  }
+}

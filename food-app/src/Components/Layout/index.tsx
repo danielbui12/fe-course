@@ -18,7 +18,7 @@ function CommonLayout() {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function getItem(
     label: React.ReactNode,
@@ -36,15 +36,14 @@ function CommonLayout() {
         if (path) {
           navigate(path);
         }
-      }
+      },
     } as MenuItem;
   }
 
   const adminItems: MenuItem[] = [
-    getItem("Setting", "1", <SettingOutlined />, '/management'),
-    getItem("Statistic", "2", <PieChartOutlined />, '/management/statistic'),
+    getItem("Setting", "1", <SettingOutlined />, "/management"),
+    getItem("Statistic", "2", <PieChartOutlined />, "/management/statistic"),
   ];
-
 
   return (
     <Layout style={{ minHeight: "100vh", maxWidth: "100vw" }}>
@@ -105,8 +104,8 @@ function CommonLayout() {
                 }}
               />
               {(() => {
-                const paths = window.location.pathname.split('/')
-                return paths[paths.length - 1]
+                const paths = window.location.pathname.split("/");
+                return paths[paths.length - 1];
               })()}
             </>
           ) : (
