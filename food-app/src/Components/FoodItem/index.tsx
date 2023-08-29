@@ -5,9 +5,10 @@ import { EditOutlined } from "@ant-design/icons";
 
 interface IProps {
   data: IFood;
+  onClick: (id: number) => void
 }
 
-function FoodItem({ data }: IProps) {
+function FoodItem({ data, onClick }: IProps) {
   return (
     <div className="food-item">
       <Card bordered={false}>
@@ -20,7 +21,12 @@ function FoodItem({ data }: IProps) {
         </div>
       </Card>
 
-      <Button icon={<EditOutlined />} size="large" className="edit-btn">
+      <Button 
+        icon={<EditOutlined />} 
+        size="large" 
+        className="edit-btn"
+        onClick={() => onClick(data.id)}
+      >
         Edit dish
       </Button>
     </div>
