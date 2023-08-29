@@ -101,17 +101,15 @@ border: 1px solid var(--bg-line, #393c49) !important;
 /* ANT MENU */
 
 /* ANT BUTTON */
-.ant-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 [type='reset'],
 [type='submit'] {
   background-color: var(--primary-color, #ea7c69) !important;
 }
 /* ANT BUTTON */
+
+.anticon svg {
+  margin-top: -6px !important;
+}
 
 /* ANT DRAWER */
 .ant-drawer-content {

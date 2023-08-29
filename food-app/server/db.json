@@ -6,7 +6,17 @@
       "full_name": "Admin"
     }
   ],
-  "food": [],
+  "food": [
+    {
+      "name": "Spicy seasoned seafood noodles",
+      "image": "localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
+      "price": "2.29",
+      "discount_amount": "0",
+      "quantity": "20",
+      "tag": "Hot Dish",
+      "id": 1
+    }
+  ],
   "order": [],
   "order_item": [],
   "table": [

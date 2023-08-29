@@ -12,7 +12,7 @@ const getQueryString = (query: object) => {
 };
 
 export interface IRequest {
-  method: "GET" | "POST";
+  method: "GET" | "POST" | "PATCH";
   path?: string;
   data?: object;
   query?: object;

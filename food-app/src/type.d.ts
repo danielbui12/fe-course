@@ -16,6 +16,8 @@ export interface IFood {
   tag: Tag;
 }
 
+export type INewFood = Omit<IFood, 'id'>;
+
 export interface IOrder {
   id: number;
   total_price: number;

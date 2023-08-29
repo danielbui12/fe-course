@@ -47,7 +47,7 @@ export async function verifyJWT(
 
     if (
       !adminAPI.includes(api) &&
-      (!protectedHeader.table_id || !protectedHeader.email)
+      (!protectedHeader.table_id && !protectedHeader.email)
     ) {
       return 403;
     }
