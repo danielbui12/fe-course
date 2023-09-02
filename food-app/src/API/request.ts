@@ -25,6 +25,7 @@ export interface IRequest {
 export interface IResponse {
   data: any;
   status: number;
+  total?: number;
 }
 
 async function send({
@@ -65,6 +66,7 @@ async function send({
       .then(async (result) => {
         return resolve({
           data: result.data,
+          total: Number(result.headers['x-total-count']),
           status: result.status,
         });
       })

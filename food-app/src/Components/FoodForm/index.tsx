@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { FOOD_CATEGORY } from "../../utils/constants";
 import "./foodFormStyle.scss"
-import { Button, Drawer, Form, Input, Select } from 'antd';
+import { Button, Drawer, Form, FormInstance, Input, Select } from 'antd';
 import { getDetailFoodById } from "../../API";
 import { INewFood } from "../../type";
 
@@ -12,11 +12,10 @@ interface IProps {
   onClose: () => void;
   onSubmit: (data: INewFood) => void;
   selectedItemId: number | null;
+  form: FormInstance
 }
 
-function FoodForm({ isOpen, onClose, onSubmit, selectedItemId }: IProps) {
-  const [form] = Form.useForm()
-
+function FoodForm({ isOpen, onClose, onSubmit, selectedItemId, form }: IProps) {
   const onInitInfoUpdateFood = useCallback(() => {
     if (selectedItemId && form) {
       getDetailFoodById(selectedItemId)
@@ -44,11 +43,7 @@ function FoodForm({ isOpen, onClose, onSubmit, selectedItemId }: IProps) {
     >
       <Form 
         layout="vertical" 
-        onFinish={(values) => { 
-          console.log(values);
-          
-          onSubmit(values)
-        }} 
+        onFinish={onSubmit} 
         form={form}
       >
         <Form.Item
@@ -88,11 +83,11 @@ function FoodForm({ isOpen, onClose, onSubmit, selectedItemId }: IProps) {
             { required: true, message: 'Please enter food price' },
             { min: 0, message: 'Invalid food price' },
             {
-              validator: (_, value, cb) => {
+              validator: (_, value) => {
                 if (isNaN(value)) {
-                  cb("Invalid food price")
+                  return Promise.reject("Invalid food price")
                 } else {
-                  cb()
+                  return Promise.resolve()
                 }
               }
             }
@@ -113,14 +108,14 @@ function FoodForm({ isOpen, onClose, onSubmit, selectedItemId }: IProps) {
             { required: true, message: 'Please enter discount amount' },
             { min: 0, message: 'Invalid amount' },
             {
-              validator: (_, value, cb) => {
+              validator: (_, value) => {
                 const formPrice = form.getFieldValue("price")
                 if (isNaN(value)) {
-                  cb("Invalid amount")
+                  return Promise.reject("Invalid amount")
                 } else if (Number(formPrice) <= Number(value)) {
-                  cb("Discount amount must be smaller than price")
+                  return Promise.reject("Discount amount must be smaller than price")
                 } else {
-                  cb()
+                  return Promise.resolve()
                 }
               }
             }
@@ -130,7 +125,6 @@ function FoodForm({ isOpen, onClose, onSubmit, selectedItemId }: IProps) {
             style={{ width: '100%' }}
             addonBefore="$"
             size="large"
-            type="number"
             min={0}
           />
         </Form.Item>

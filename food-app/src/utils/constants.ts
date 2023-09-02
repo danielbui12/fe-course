@@ -8,3 +8,5 @@ export const FOOD_CATEGORY = [
   ,"Appetizer"
   ,"Dessert"
 ]
+
+export const LIMIT_DISPLAY_ITEM_PER_PAGE = 10;

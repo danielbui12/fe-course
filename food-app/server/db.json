@@ -15,6 +15,42 @@
       "quantity": "20",
       "tag": "Hot Dish",
       "id": 1
+    },
+    {
+      "name": "Spicy seasoned seafood noodles 2",
+      "image": "localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
+      "price": "2.29",
+      "discount_amount": "0.4",
+      "quantity": "22",
+      "tag": "Cold Dish",
+      "id": 2
+    },
+    {
+      "name": "Nguyen Van A",
+      "image": "localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
+      "price": "33",
+      "discount_amount": "2",
+      "quantity": "12",
+      "tag": "Appetizer",
+      "id": 3
+    },
+    {
+      "name": "Nguyen Van A",
+      "image": "localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
+      "price": "33",
+      "discount_amount": "2",
+      "quantity": "12",
+      "tag": "Appetizer",
+      "id": 4
+    },
+    {
+      "name": "Nguyen Van A",
+      "image": "localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
+      "price": "2.29",
+      "discount_amount": "1",
+      "quantity": "12",
+      "tag": "Soup",
+      "id": 5
     }
   ],
   "order": [],

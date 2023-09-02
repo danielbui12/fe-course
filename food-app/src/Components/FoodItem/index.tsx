@@ -12,10 +12,16 @@ function FoodItem({ data, onClick }: IProps) {
   return (
     <div className="food-item">
       <Card bordered={false}>
-        <img src={data.image} alt={data.name} />
+        <img 
+          src={data.image} 
+          alt={data.name} 
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "/assets/spicySeasonedSeafoodNoodles.svg"
+          }}
+        />
         <div className="food-name">{data.name}</div>
         <div className="food-info">
-          <span>$ {data.price - data.discount_amount}</span>
+          <span>$ {(data.price - data.discount_amount).toLocaleString()}</span>
           <img src="/assets/ellipse.svg" alt="ellipse" />
           <span>{data.quantity} Bowl(s)</span>
         </div>

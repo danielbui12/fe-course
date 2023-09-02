@@ -2,7 +2,7 @@ import { message } from "antd";
 import { IAdmin, IFood, INewFood, ITable } from "../type";
 import Request, { IRequest } from "./request";
 import { generateJWT } from "./jwt";
-import { STORAGE_ACCESS_TOKEN_KEY } from "../utils/constants";
+import { LIMIT_DISPLAY_ITEM_PER_PAGE, STORAGE_ACCESS_TOKEN_KEY } from "../utils/constants";
 
 export const getTable = async (inUsed?: boolean): Promise<ITable[]> => {
   const payload: IRequest = {
@@ -103,8 +103,33 @@ export const updateFoodById = async (data: IFood): Promise<IFood | null> => {
   }
 };
 
+interface IGetFoodResp {
+  data: IFood[];
+  total: number;
+}
+export const getFood = async (skip: number = 0, limit: number = LIMIT_DISPLAY_ITEM_PER_PAGE): Promise<IGetFoodResp> => {
+  const payload: IRequest = {
+    method: "GET",
+    path: `food`,
+    query: {
+      "_start": skip,
+      "_limit": limit 
+    }
+  };
 
-
+  const resp = await Request.send(payload);
+  if (resp.status === 200) {
+    return {
+      data: resp.data as IFood[],
+      total: resp.total as number
+    };
+  } else {
+    return {
+      data: [],
+      total: 0
+    };
+  }
+}
 
 
 
