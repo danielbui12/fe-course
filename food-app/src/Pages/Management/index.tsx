@@ -1,33 +1,16 @@
-import { Button, Form, List } from "antd";
+import { Button, Form } from "antd";
 import { IFood, INewFood } from "../../type";
-import FoodItem from "../../Components/FoodItem";
 import { PlusOutlined } from "@ant-design/icons";
 import FoodForm from "../../Components/FoodForm";
-import { useCallback, useEffect, useState } from "react";
-import { createFood, getFood, updateFoodById } from "../../API";
-import { LIMIT_DISPLAY_ITEM_PER_PAGE } from "../../utils/constants";
+import { useState } from "react";
+import { createFood, updateFoodById } from "../../API";
+import FoodList from "../../Components/FoodList";
 
 function Management() {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<number | null>(null)
-  const [foodData, setFoodData] = useState<IFood[]>([])
-  const [total, setTotal] = useState(0)
-  const [skip, setSkip] = useState(0)
 
   const [form] = Form.useForm()
-
-  const onGetFoodData = useCallback(() => {
-    getFood(skip)
-      .then(resp => {
-        setFoodData(resp.data)
-        setTotal(resp.total)
-      })
-  }, [skip])
-
-  useEffect(() => {
-    onGetFoodData()
-  }, [onGetFoodData])
-
 
   const onClose = () => {
     setIsOpen(false)
@@ -37,15 +20,12 @@ function Management() {
 
   const onSubmit = async (data: INewFood | IFood) => {
     try {
-      let resp;
       if (selectedItem) {
-        resp = await updateFoodById(data as IFood)
+        await updateFoodById(data as IFood)
       } else {
-        resp = await createFood(data as INewFood)
+        await createFood(data as INewFood)
       }
-      onGetFoodData()
-      setIsOpen(!resp);
-      form.resetFields()
+      onClose();
     } catch (error) {
       console.log(__filename, error);
     }
@@ -63,38 +43,12 @@ function Management() {
         </Button>
       </div>
       <br />
-      <List
-        grid={{
-          gutter: 16,
-          column: 5,
-          xs: 1,
-          sm: 2,
-          md: 2,
-          lg: 3,
-          xl: 4,
-        }}
-        dataSource={foodData}
-        renderItem={(item) => (
-          <List.Item style={{ padding: "12px" }}>
-            <FoodItem 
-              onClick={(id: number) => {
-                setSelectedItem(id)
-                setIsOpen(true)
-              }} 
-              data={item} 
-            />
-          </List.Item>
-        )}
-        pagination={{
-          total: total,
-          pageSize: LIMIT_DISPLAY_ITEM_PER_PAGE,
-          position: 'bottom',
-          onChange: (newPage: number) => {
-            setSkip((newPage - 1) * LIMIT_DISPLAY_ITEM_PER_PAGE)
-          }
+      <FoodList 
+        onEdit={(id: number) => {
+          setSelectedItem(id)
+          setIsOpen(true)
         }}
       />
-
       <FoodForm 
         isOpen={isOpen}
         onClose={onClose}

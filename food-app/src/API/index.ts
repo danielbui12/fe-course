@@ -1,5 +1,5 @@
 import { message } from "antd";
-import { IAdmin, IFood, INewFood, ITable } from "../type";
+import { IAdmin, IFood, INewFood, ITable, Tag } from "../type";
 import Request, { IRequest } from "./request";
 import { generateJWT } from "./jwt";
 import { LIMIT_DISPLAY_ITEM_PER_PAGE, STORAGE_ACCESS_TOKEN_KEY } from "../utils/constants";
@@ -107,13 +107,24 @@ interface IGetFoodResp {
   data: IFood[];
   total: number;
 }
-export const getFood = async (skip: number = 0, limit: number = LIMIT_DISPLAY_ITEM_PER_PAGE): Promise<IGetFoodResp> => {
+interface IGetFoodRequest {
+  tag?: Tag;
+  skip?: number;
+  limit?: number;
+}
+
+export const getFood = async ({
+  tag = "Hot Dish",
+  skip = 0,
+  limit = LIMIT_DISPLAY_ITEM_PER_PAGE,
+}: IGetFoodRequest): Promise<IGetFoodResp> => {
   const payload: IRequest = {
     method: "GET",
     path: `food`,
     query: {
       "_start": skip,
-      "_limit": limit 
+      "_limit": limit,
+      "tag": tag
     }
   };
 
