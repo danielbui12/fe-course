@@ -107,7 +107,7 @@ border: 1px solid var(--bg-line, #393c49) !important;
 }
 /* ANT BUTTON */
 
-.anticon svg {
+.ant-btn .anticon svg {
   margin-top: -6px !important;
 }
 

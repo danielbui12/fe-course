@@ -1,12 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { AppDispatch } from "./store";
+import { generateJWT } from "../API/jwt";
+import { STORAGE_ACCESS_TOKEN_KEY } from "../utils/constants";
 
-const STORAGE_KEY = "user_reducer";
+export const STORAGE_KEY = "user_reducer";
 const storageData = JSON.parse(
   window.localStorage.getItem(STORAGE_KEY) || "{}",
 );
 
 function _saveData(data: object) {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+export const onBookTable = (data: object) => async (dispatch: AppDispatch) => {
+  const token = await generateJWT(data);
+  window.localStorage.setItem(STORAGE_ACCESS_TOKEN_KEY, token);
+
+  dispatch(userSlice.actions.book(data));
 }
 
 const userSlice = createSlice({
@@ -16,11 +26,11 @@ const userSlice = createSlice({
   },
   reducers: {
     book: (state, action) => {
-      state.table_id = action.payload;
+      state.table_id = action.payload.table_id;
       _saveData(state);
       window.location.href = "/";
     },
   },
 });
-export const { book } = userSlice.actions;
+
 export default userSlice;

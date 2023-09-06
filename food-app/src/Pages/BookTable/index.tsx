@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "../../redux/store";
 import { getAvailableTable } from "../../redux/tableSlice";
 import { AnyAction } from "redux";
-import { book } from "../../redux/userSlice";
+import { onBookTable } from "../../redux/userSlice";
 
 const BookTable: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const BookTable: React.FC = () => {
     <main className="book-table mx-8 flex flex-col justify-center items-left">
       <Form
         onFinish={({ table_id }) => {
-          dispatch(book(parseInt(table_id)));
+          dispatch(onBookTable({ table_id }) as unknown as AnyAction);
         }}
       >
         <Typography.Title

@@ -9,10 +9,10 @@
   "food": [
     {
       "name": "Spicy seasoned seafood noodles",
-      "image": "localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
+      "image": "http://localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
       "price": "2.29",
       "discount_amount": "0",
-      "quantity": "20",
+      "quantity": "16",
       "tag": "Hot Dish",
       "id": 1
     },

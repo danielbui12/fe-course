@@ -1,14 +1,15 @@
 import { Button, Card } from "antd";
 import { IFood } from "../../type";
 import "./foodStyle.scss";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 
 interface IProps {
   data: IFood;
-  onClick?: (id: number) => void
+  onClick: (id: number) => void
+  type: "view" | "create/edit"
 }
 
-function FoodItem({ data, onClick }: IProps) {
+function FoodItem({ data, onClick, type }: IProps) {
   return (
     <div className="food-item">
       <Card bordered={false}>
@@ -26,18 +27,16 @@ function FoodItem({ data, onClick }: IProps) {
           <span>{data.quantity} Bowl(s)</span>
         </div>
       </Card>
-      {
-        onClick && (
-          <Button 
-            icon={<EditOutlined />} 
-            size="large" 
-            className="edit-btn"
-            onClick={() => onClick(data.id)}
-          >
-            Edit dish
-          </Button>
-        )
-      }
+      <Button 
+        icon={type === 'view' ? <PlusOutlined /> :<EditOutlined />} 
+        size="large"
+        className="edit-btn"
+        onClick={() => onClick(data.id)}
+      >
+        {
+          type === 'view' ? 'Add to order' : 'Edit dish'
+        }
+      </Button>
     </div>
   );
 }

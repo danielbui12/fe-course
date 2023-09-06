@@ -6,11 +6,13 @@ import { getFood } from '../../API'
 import FoodItem from '../FoodItem'
 
 interface IProps {
-  onEdit?: (id: number) => void
+  onClick: (id: number) => void
+  type: "view" | "create/edit"
 }
 
 function FoodList({
-  onEdit
+  onClick,
+  type
 }: IProps) {
   const [foodData, setFoodData] = useState<IFood[]>([])
   const [total, setTotal] = useState(0)
@@ -65,8 +67,9 @@ function FoodList({
         renderItem={(item) => (
           <List.Item style={{ padding: "12px" }}>
             <FoodItem
-              onClick={onEdit}
+              onClick={onClick}
               data={item}
+              type={type}
             />
           </List.Item>
         )}
