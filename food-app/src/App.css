@@ -102,7 +102,7 @@ border: 1px solid var(--bg-line, #393c49) !important;
 
 /* ANT BUTTON */
 [type='reset'],
-[type='submit'] {
+[type='submit'], .ant-btn-primary {
   background-color: var(--primary-color, #ea7c69) !important;
 }
 /* ANT BUTTON */
