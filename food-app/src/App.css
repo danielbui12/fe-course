@@ -33,7 +33,7 @@ body .container {
 }
 
 svg {
-  fill: var(--primary-color);
+  fill: var(--primary-color, #ea7c69);
 }
 
 .btn-submit {
