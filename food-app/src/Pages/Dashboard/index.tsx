@@ -4,28 +4,16 @@ import { useCallback, useState } from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import OrderItem from '../../Components/OrderItem';
 import { ICart } from '../../type';
-import { getDetailFoodById } from '../../API';
+import { createOrder, createOrderItem, getDetailFoodById, updateFoodById } from '../../API';
+import { useSelector } from '../../redux/store';
 
 function Dashboard() {
-  const [orderItem, setOrderItem] = useState<ICart[]>([
-    {
-      foodData: {
-        id: 1,
-        name: "test",
-        price: 2.20,
-        quantity: 10, // total quantity
-        image: "string;",
-        discount_amount: 1,
-        tag: "Cold Dish"
-      },
-      quantity: 1, // in cart quantity
-      note: "",
-    }
-  ])
+  const [orderItem, setOrderItem] = useState<ICart[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const {
     token: { colorPrimary },
   } = theme.useToken();
+  const tableId = useSelector((state) => state.user.table_id)
 
   const onUpdateDish = useCallback((index: number, data: object) => {
     const _newOrderItem = [...orderItem];
@@ -67,8 +55,47 @@ function Dashboard() {
     setOrderItem(prev => prev.filter(_item => _item.foodData.id !== foodId))
   }
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
+    const discountAmount = orderItem.reduce((prev, currentItem) => prev + (currentItem.quantity * currentItem.foodData.discount_amount), 0)
+    const totalPrice = orderItem.reduce((prev, currentItem) => prev + (currentItem.quantity * (currentItem.foodData.price - currentItem.foodData.discount_amount)), 0)
+    const taxAmount = Math.round(totalPrice * 0.1)
+    const order = await createOrder({
+      total_price: Number(totalPrice.toLocaleString()),
+      tax_amount: Number(taxAmount.toLocaleString()),
+      discount_amount: Number(discountAmount.toLocaleString()),
+      total_payment: Number((totalPrice + taxAmount).toLocaleString()),
+      payment_at: new Date(),
+      table_id: tableId
+    });
+
+    if (!order) {
+      return;
+    }
+
+    const orderItemResp = await createOrderItem(orderItem.map(_item => ({
+      quantity: _item.quantity,
+      order_id: order.id,
+      food_id: _item.foodData.id,
+      price: _item.foodData.price,
+      discount_amount: _item.foodData.discount_amount,
+      total: (_item.foodData.price - _item.foodData.discount_amount) * _item.quantity,
+      note: _item.note,
+    })));    
     
+    if (!orderItemResp) {
+      return;
+    }
+
+    await Promise.all(orderItem.map(_item => {
+      return updateFoodById({
+        ..._item.foodData,
+        quantity: _item.foodData.quantity - _item.quantity
+      });
+    }));
+
+    message.success("Payment successful!")
+    setOrderItem([])
+    setIsOpen(false)
   }
 
   return (
@@ -92,7 +119,13 @@ function Dashboard() {
         bodyStyle={{ paddingBottom: 80 }}
         footer={(
           <Space>
-            <Button disabled={orderItem.length === 0} size="large" type="primary" color={colorPrimary}>Buy</Button>
+            <Button 
+              disabled={orderItem.length === 0} 
+              size="large" 
+              type="primary" 
+              color={colorPrimary}
+              onClick={onSubmit}
+            >Buy</Button>
             <Button onClick={() => setIsOpen(false)} size="large">Cancel</Button>
           </Space>
         )}

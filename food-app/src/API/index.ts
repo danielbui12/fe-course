@@ -1,5 +1,5 @@
 import { message } from "antd";
-import { IAdmin, IFood, INewFood, ITable, Tag } from "../type";
+import { IAdmin, IFood, INewFood, INewOrder, INewOrderItem, IOrder, ITable, Tag } from "../type";
 import Request, { IRequest } from "./request";
 import { generateJWT } from "./jwt";
 import { LIMIT_DISPLAY_ITEM_PER_PAGE, STORAGE_ACCESS_TOKEN_KEY } from "../utils/constants";
@@ -142,8 +142,37 @@ export const getFood = async ({
   }
 }
 
+export const createOrder = async (data: INewOrder): Promise<IOrder | undefined> => {
+  const payload: IRequest = {
+    method: "POST",
+    path: "order",
+    data: data
+  };
 
+  const resp = await Request.send(payload);
+  if (resp.status === 201) {
+    return resp.data;
+  } else {
+    message.error("Payment failed!")
+    return undefined;
+  }
+}
 
+export const createOrderItem = async (data: INewOrderItem[]): Promise<boolean> => {
+  const payload: IRequest = {
+    method: "POST",
+    path: "order_item",
+    data: data
+  };
+
+  const resp = await Request.send(payload);
+  if (resp.status === 201) {
+    return true;
+  } else {
+    message.error("Payment failed!")
+    return false;
+  }
+}
 
 
 

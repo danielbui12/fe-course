@@ -12,7 +12,7 @@
       "image": "http://localhost:3000/assets/spicySeasonedSeafoodNoodles.svg",
       "price": "2.29",
       "discount_amount": "0",
-      "quantity": "16",
+      "quantity": 14,
       "tag": "Hot Dish",
       "id": 1
     },
@@ -53,8 +53,30 @@
       "id": 5
     }
   ],
-  "order": [],
-  "order_item": [],
+  "order": [
+    {
+      "total_price": 4.58,
+      "tax_amount": 0,
+      "discount_amount": 0,
+      "total_payment": 4.58,
+      "payment_at": "2023-09-08T14:36:30.320Z",
+      "table_id": "1",
+      "id": 1
+    }
+  ],
+  "order_item": [
+    [
+      {
+        "quantity": 2,
+        "order_id": 1,
+        "food_id": 1,
+        "price": "2.29",
+        "discount_amount": "0",
+        "total": 4.58,
+        "note": "spicyyyyyyyyyyy"
+      }
+    ]
+  ],
   "table": [
     {
       "id": 1,
